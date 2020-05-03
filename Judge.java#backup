@@ -1,0 +1,56 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.lang.*;
+
+public class Judge extends SpecialCharacter
+{ 
+    public void judgeRow(int row)
+    {
+        System.out.println("Judge looks at row " + row); //keep this line
+        
+        MastermindWorld.clearBalloons(row); //keep this line
+        
+        //part 1: complete the code below
+    boolean[] checker = {false, false, false};
+        for(int i=0; i<3; i++){
+            if(MastermindWorld.getObjectChar(i, row) == MastermindWorld.generateSecret().secret.charAt(i)) checker[i]=true;
+        }
+    }   
+    
+    public void judgeLatestRow()
+    {
+        //part 1: complete the code below
+        
+    }
+
+    public void judgeAllRows()
+    {
+        //part 1: complete the code below
+        
+    }
+    
+    public int getNumberOfSpecificPegsInAnswer(char type, int row)
+    {
+        //part 2: complete the code below
+        
+        return 0; //you need to change this line
+    }
+
+    public int getNumberOfSpecificPegsInSecret(char type)
+    {
+        //part 2: complete the code below
+        
+        return 0; //you need to change this line
+    }
+    
+    /*
+     * It returns the number of yellow balloons, assuming no orange balloons would be awarded. Read assignment description on how to make use of it.
+     * It is used in part 2 only.
+     */
+    public int getNumberOfYellowBalloons(int row)
+    {
+        return Math.min(getNumberOfSpecificPegsInSecret('g'), getNumberOfSpecificPegsInAnswer('g', row))
+            + Math.min(getNumberOfSpecificPegsInSecret('s'), getNumberOfSpecificPegsInAnswer('s', row))
+            + Math.min(getNumberOfSpecificPegsInSecret('a'), getNumberOfSpecificPegsInAnswer('a', row))
+            + Math.min(getNumberOfSpecificPegsInSecret('p'), getNumberOfSpecificPegsInAnswer('p', row));
+    }
+}
